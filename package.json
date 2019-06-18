@@ -1,18 +1,11 @@
 {
     "name": "google-libphonenumber",
-    "version": "3.2.2",
-    "description": "The up-to-date and reliable Google's libphonenumber package for node.js.",
-    "author": {
-        "name": "Rui Marinho",
-        "email": "ruipmarinho@gmail.com"
-    },
-    "license": "(MIT AND Apache-2.0)",
-    "homepage": "https://ruimarinho.github.io/google-libphonenumber/",
-    "bugs": "https://github.com/ruimarinho/google-libphonenumber/issues",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ruimarinho/google-libphonenumber.git"
-    },
+    "version": "3.2.2-remitly.1",
+    "description": "Remitly's fork of a phone number validation package",
+    "author": "Remitly, Inc.",
+    "license": "UNLICENSED",
+    "homepage": "https://github.com/Remitly/google-libphonenumber",
+    "bugs": "https://github.com/Remitly/google-libphonenumber/issues",
     "main": "dist/libphonenumber.js",
     "keywords": [
         "browserify",
@@ -52,5 +45,8 @@
     "engines": {
         "node": ">=0.10"
     },
-    "files": "dist/libphonenumber.js"
+    "files": "dist/libphonenumber.js",
+    "publishConfig": {
+        "registry": "https://npm.int.remitly.com/"
+    }
 }
