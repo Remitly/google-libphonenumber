@@ -9,7 +9,7 @@ rm -rf dist/*
 if [ "${ONLINE:-true}" == "true" ]; then
   echo "Compiling using Google Closure Service..."
 
-  curl --silent \
+  curl \
     --data output_format=text \
     --data output_info=compiled_code \
     --data use_closure_library=true \
