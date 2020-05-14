@@ -1,3 +1,49 @@
+# ⚠️ Watch out!
+
+This is a fork! We use this fork *only* to manually pre-release when the original package hasn't been updated. In general, don't make manual changes here. **Do not bump major, minor, or patch versions**.
+
+Several people have done this wrong, so please consult Cameron Little if you need to make changes.
+
+## How to tell if you need a prerelease:
+
+1. Find the version of `libphonenumber` `google-libphonenumber` is using by checking their [changelog](https://github.com/ruimarinho/google-libphonenumber/blob/master/CHANGELOG.md).
+2. Find the latest version of `libphonenumber` by checking their [releases](https://github.com/google/libphonenumber/releases).
+3. If (1) is equal to (2), don't create or use a prerelease. If (1) is less than (2), merge with the forked repository's master, then create a prerelease.
+
+## How to create a prerelease
+
+### 1. Merge with the upstream repository's master:
+
+```
+cameronlittle@ip-10-10-2-246:~/Dev/google-libphonenumber
+▻ git remote -v
+origin	git@github.com:Remitly/google-libphonenumber.git (fetch)
+origin	git@github.com:Remitly/google-libphonenumber.git (push)
+upstream	git@github.com:ruimarinho/google-libphonenumber.git (fetch)
+upstream	git@github.com:ruimarinho/google-libphonenumber.git (push)
+cameronlittle@ip-10-10-2-246:~/Dev/google-libphonenumber (±ruimarinho-master)
+▻ git checkout -b upstream-master origin/master
+Branch 'upstream-master' set up to track remote branch 'master' from 'origin'.
+Switched to a new branch 'upstream-master'
+cameronlittle@ip-10-10-2-246:~/Dev/google-libphonenumber (±upstream-master)
+▻ git merge upstream/master 
+...
+cameronlittle@ip-10-10-2-246:~/Dev/google-libphonenumber (±upstream-master)
+▻ git push -u origin upstream-master
+```
+
+Create a PR with this and merge it
+
+## 2. Create a prerelease:
+
+1. Run the [update script](bin/update.sh)
+2. Create a prerelease version by running `npm version prepatch --preid=remitly`.
+    - This will build for you, if it fails you'll need to start over
+3. Create and merge a PR
+4. Publish to [the registry](https://github.com/Remitly/frontend/blob/master/guides/internal-npm-registry.md)
+
+---
+
 # google-libphonenumber
 
 The up-to-date and reliable Google's libphonenumber package for node.js. Zero dependencies.

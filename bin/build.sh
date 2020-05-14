@@ -8,8 +8,10 @@ rm -rf dist/*
 # Test if online compilation should be used.
 if [ "${ONLINE:-true}" == "true" ]; then
   echo "Compiling using Google Closure Service..."
+  echo "This usually takes ~30 sec, if it takes more than a minute, restart this process"
+  echo "Calling the remote compiler is awfully unreliable, though enough tries should get you there"
 
-  curl --silent \
+  curl \
     --data output_format=text \
     --data output_info=compiled_code \
     --data use_closure_library=true \

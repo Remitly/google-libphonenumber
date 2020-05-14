@@ -33,9 +33,9 @@
   },
   "scripts": {
     "build": "bin/build.sh",
-    "changelog": "github_changelog_generator --no-issues --header-label='# Changelog' --future-release=v$npm_config_future_release --user ruimarinho --project google-libphonenumber && sed -i '' -e :a -e '$d;N;2,3ba' -e 'P;D' CHANGELOG.md",
+    "changelog": "exit 0",
     "lint": "eslint src/index.js test",
-    "prepare": "npm run build",
+    "prepare": "test \"$(git status --porcelain)\" && npm run test && npm run build",
     "test": "npm run build && npm run testonly",
     "testonly": "mocha $npm_package_options_mocha",
     "update": "bin/update.sh",
@@ -50,5 +50,8 @@
   },
   "engines": {
     "node": ">=0.10"
+  },
+  "publishConfig": {
+    "registry": "https://npm.int.remitly.com/"
   }
 }
