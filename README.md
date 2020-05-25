@@ -2,6 +2,8 @@
 
 This is a fork! We use this fork *only* to manually pre-release when the original package hasn't been updated. In general, don't make manual changes here. **Do not bump major, minor, or patch versions**.
 
+It is **_very important_** you don't release non-patch versions because they will conflict once the upstream updates.
+
 Several people have done this wrong, so please consult Cameron Little if you need to make changes.
 
 ## How to tell if you need a prerelease:
@@ -37,10 +39,15 @@ Create a PR with this and merge it
 ## 2. Create a prerelease:
 
 1. Run the [update script](bin/update.sh)
-2. Create a prerelease version by running `npm version prepatch --preid=remitly`.
+2. Create a prerelease version by running `npm version prerelease --preid=remitly`.
     - This will build for you, if it fails you'll need to start over
+    - The version should look something like `v1.0.4-remitly.0` - the `-remitly.` part is important.
 3. Create and merge a PR
 4. Publish to [the registry](https://github.com/Remitly/frontend/blob/master/guides/internal-npm-registry.md)
+
+## 3. Update dependent projects
+
+Upgrade consumers (such as Narwhal) to use your new pre-released version.
 
 ---
 
